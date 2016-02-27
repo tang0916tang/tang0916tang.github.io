@@ -65,6 +65,154 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-CSS知识点回顾" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/26/CSS知识点回顾/" class="article-date">
+  <time datetime="2016-02-26T01:31:19.000Z" itemprop="datePublished">2016-02-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/26/CSS知识点回顾/">CSS知识点回顾</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##CSS知识点回顾</p>
+<h3 id="CSS引入方式">CSS引入方式</h3><ul>
+<li><p><strong>内部引入（行间样式）</strong></p>
+<p> 优先级高，不会被其他样式覆盖和影响，不会产生其他请求<br>  但是，不利于代码的维护，没有“内容、样式”分离，影响阅读体验</p>
+<pre><code>&lt;<span class="keyword">div</span> <span class="type">class</span>=<span class="string">"box"</span> style=width:<span class="number">300</span>px;height:<span class="number">300</span>px;&gt;&lt;/<span class="keyword">div</span>&gt;
+</code></pre></li>
+<li><p><strong>style标签引入(嵌入式)</strong></p>
+<p>实现了“内容、样式分开的规范”，比行间样式的体验要高，也不会产生其他请求<br>但是，不利于复用，增加了html文档的篇幅</p>
+</li>
+</ul>
+<p>在head标签中引入style标签 </p>
+<pre><code><span class="tag">&lt;<span class="title">html</span>&gt;</span>
+<span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">"utf-8"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">title</span>&gt;</span>CSS引入方式<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css">
+        <span class="class">.box</span><span class="rules">{
+            <span class="rule"><span class="attribute">width</span>:<span class="value"><span class="number">300px</span></span></span>;
+            <span class="rule"><span class="attribute">height</span>:<span class="value"><span class="number">300px</span></span></span>;
+        }</span>
+    </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+<span class="tag">&lt;<span class="title">body</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"box"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span>
+</code></pre><ul>
+<li><strong>link引入 (链接式)</strong></li>
+</ul>
+<p>实现了“内容样式”分离,有利于阅读体验</p>
+<p>引入外部CSS文件</p>
+<pre><code>&lt;link rel=<span class="string">"stylesheet"</span> <span class="class"><span class="keyword">type</span></span>=<span class="string">"text/css"</span> href=<span class="string">"reset.css"</span>/&gt;
+</code></pre><p>href属性就代表引入的CSS文件</p>
+<ul>
+<li><strong>@import url（）</strong></li>
+</ul>
+<p>引入外部css文件</p>
+<h3 id="CSS语法">CSS语法</h3><p>标签{<br>    属性:属性值;<br>}</p>
+<p>例:<br>  background{ color:red;}</p>
+<h3 id="CSS选择器">CSS选择器</h3><ul>
+<li><strong>标签选择器</strong></li>
+</ul>
+<p>例:</p>
+<pre><code><span class="tag">div</span><span class="rules">{  }</span>
+<span class="tag">a</span><span class="rules">{  }</span>
+</code></pre><ul>
+<li><strong>id选择器（名称是唯一的）</strong></li>
+</ul>
+<p>例:标签名为box的标签元素</p>
+<pre><code><span class="id">#box</span><span class="rules">{ }</span>
+</code></pre><ul>
+<li><strong>类选择器（名字可以重复）</strong></li>
+</ul>
+<p>例:标签名为box的标签元素</p>
+<pre><code><span class="class">.box</span><span class="rules">{ }</span>
+</code></pre><ul>
+<li><strong>层级选择器（父子选择器）</strong></li>
+</ul>
+<p>例:body下的div标签</p>
+<pre><code>body <span class="keyword">div</span>{ }
+</code></pre><h4 id="*小结">*小结</h4><p><strong>优先级</strong></p>
+<p>标签选择器 &lt; 类选择器 &lt; id选择器</p>
+<p><em>注意:如果加上!important,那么所有的优先级规则全部无效</em></p>
+<ul>
+<li><strong>群组选择器</strong></li>
+</ul>
+<p>每个标签元素之间用,连接</p>
+<pre><code><span class="operator">a</span>,h,<span class="operator">div</span>,p{ }
+</code></pre><ul>
+<li><p><strong>通配选择器</strong></p>
+<p>*为通配符 用来对所有的标签设置样式 清除一些默认的属性 通配选择器的优先级最低  要谨慎使用</p>
+</li>
+</ul>
+<h3 id="CSS的几种布局方式">CSS的几种布局方式</h3><ul>
+<li><p><strong>浮动布局</strong></p>
+<p>float(浮动):</p>
+<p>none;(默认值)</p>
+<p>left;(向左浮动) </p>
+<p>right;(向右浮动)</p>
+</li>
+<li><p><strong>定位布局</strong></p>
+</li>
+</ul>
+<p><strong>相对定位<br>position:relative;</strong> <em>相对自身的位置进行定位,值可以为负数,可以对块级标签使用,不会改变标签的属性。</em></p>
+<p><strong>绝对定位<br>position:absolute;</strong> <em>脱离了文档流,改变了标签的属性。如果父级标签有设置relative,则以父级标签为起点;反之,如果父级标签没有设置,则以body为起点。</em></p>
+<p><strong>固定定位<br>position:fixed;</strong></p>
+<h3 id="CSS清除浮动的方法">CSS清除浮动的方法</h3><ul>
+<li><p><strong>给浮动元素的父级元素设置一个高度</strong></p>
+</li>
+<li><p><strong>给浮动元素的父级设置overflow属性</strong><br>overflow:<br>   visible;默认值,内容不会被剪裁,会呈现在元素框之外。<br>hidden;超出父级的内容被剪裁掉,去掉滚动条。<br>scroll;超出父级边框的内容剪裁掉,当内容高度超出父级高度的时候,出现滚动条。</p>
+</li>
+<li><strong>在浮动元素的后边就上一个空标签,并在CSS中给其设置{clear:both;}属性。</strong></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/02/26/CSS知识点回顾/" data-id="cil3agyzy0000njh5pckbq3z6" class="article-share-link">Share</a>
+
+     <!-- 多说评论框 start -->
+     <div class="ds-thread" data-thread-key="cil3agyzy0000njh5pckbq3z6"data-title="cil3agyzy0000njh5pckbq3z6" data-url="http://yoursite.com/2016/02/26/CSS知识点回顾/"></div>
+
+      <!-- 多说评论框 end -->
+      <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"xiaoyi99"};
+      (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] 
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script>
+<!-- 多说公共JS代码 end -->
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-html学习总结" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/02/25/html学习总结/" class="article-date">
@@ -145,15 +293,28 @@
     <span class="tag">&lt;<span class="title">dd</span>&gt;</span>一种好吃的水果<span class="tag">&lt;<span class="title">dd</span>/&gt;</span>
 <span class="tag">&lt;<span class="title">dl</span>/&gt;</span>
 </code></pre></li>
+<li><p>表格标签</p>
+<pre><code><span class="tag">&lt;table&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+        <span class="tag">&lt;th&gt;</span><span class="tag">&lt;/th&gt;</span>
+        <span class="tag">&lt;th&gt;</span><span class="tag">&lt;/th&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+    <span class="tag">&lt;tr&gt;</span>
+        <span class="tag">&lt;th&gt;</span><span class="tag">&lt;/th&gt;</span>
+        <span class="tag">&lt;th&gt;</span><span class="tag">&lt;/th&gt;</span>
+    <span class="tag">&lt;/tr&gt;</span>
+<span class="tag">&lt;/table&gt;</span>
+</code></pre><p>以上的代码就是一个两行两列的单元格    </p>
+</li>
 </ul>
-<h1 id="未完……待续……">未完……待续……</h1>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/02/25/html学习总结/" data-id="cil2zz5iz0003bph54ervso19" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/02/25/html学习总结/" data-id="cil3agz0f0003njh5v6x81kr6" class="article-share-link">Share</a>
 
      <!-- 多说评论框 start -->
-     <div class="ds-thread" data-thread-key="cil2zz5iz0003bph54ervso19"data-title="cil2zz5iz0003bph54ervso19" data-url="http://yoursite.com/2016/02/25/html学习总结/"></div>
+     <div class="ds-thread" data-thread-key="cil3agz0f0003njh5v6x81kr6"data-title="cil3agz0f0003njh5v6x81kr6" data-url="http://yoursite.com/2016/02/25/html学习总结/"></div>
 
       <!-- 多说评论框 end -->
       <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
@@ -251,10 +412,10 @@ c = a + b <span class="comment">;</span>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/27/js也就这么回事/" data-id="cil2zz5iv0002bph5u5ahlmtu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/27/js也就这么回事/" data-id="cil3agz0d0002njh590v0hiiu" class="article-share-link">Share</a>
 
      <!-- 多说评论框 start -->
-     <div class="ds-thread" data-thread-key="cil2zz5iv0002bph5u5ahlmtu"data-title="cil2zz5iv0002bph5u5ahlmtu" data-url="http://yoursite.com/2015/11/27/js也就这么回事/"></div>
+     <div class="ds-thread" data-thread-key="cil3agz0d0002njh590v0hiiu"data-title="cil3agz0d0002njh590v0hiiu" data-url="http://yoursite.com/2015/11/27/js也就这么回事/"></div>
 
       <!-- 多说评论框 end -->
       <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
@@ -368,10 +529,10 @@ c = a + b <span class="comment">;</span>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/26/HTML——超文本标记语言/" data-id="cil2zz5ih0000bph534mk0z56" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/26/HTML——超文本标记语言/" data-id="cil3agz0i0005njh5of7mm8x4" class="article-share-link">Share</a>
 
      <!-- 多说评论框 start -->
-     <div class="ds-thread" data-thread-key="cil2zz5ih0000bph534mk0z56"data-title="cil2zz5ih0000bph534mk0z56" data-url="http://yoursite.com/2015/11/26/HTML——超文本标记语言/"></div>
+     <div class="ds-thread" data-thread-key="cil3agz0i0005njh5of7mm8x4"data-title="cil3agz0i0005njh5of7mm8x4" data-url="http://yoursite.com/2015/11/26/HTML——超文本标记语言/"></div>
 
       <!-- 多说评论框 end -->
       <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
@@ -429,10 +590,10 @@ c = a + b <span class="comment">;</span>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/25/新的旅程/" data-id="cil2zz5ip0001bph5wkv4uyzf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/25/新的旅程/" data-id="cil3agz060001njh507l9khdg" class="article-share-link">Share</a>
 
      <!-- 多说评论框 start -->
-     <div class="ds-thread" data-thread-key="cil2zz5ip0001bph5wkv4uyzf"data-title="cil2zz5ip0001bph5wkv4uyzf" data-url="http://yoursite.com/2015/11/25/新的旅程/"></div>
+     <div class="ds-thread" data-thread-key="cil3agz060001njh507l9khdg"data-title="cil3agz060001njh507l9khdg" data-url="http://yoursite.com/2015/11/25/新的旅程/"></div>
 
       <!-- 多说评论框 end -->
       <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
@@ -493,10 +654,10 @@ c = a + b <span class="comment">;</span>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/11/24/hello-world/" data-id="cil2zz5j10004bph5idt0900t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/11/24/hello-world/" data-id="cil3agz0h0004njh5jnq0v1ht" class="article-share-link">Share</a>
 
      <!-- 多说评论框 start -->
-     <div class="ds-thread" data-thread-key="cil2zz5j10004bph5idt0900t"data-title="cil2zz5j10004bph5idt0900t" data-url="http://yoursite.com/2015/11/24/hello-world/"></div>
+     <div class="ds-thread" data-thread-key="cil3agz0h0004njh5jnq0v1ht"data-title="cil3agz0h0004njh5jnq0v1ht" data-url="http://yoursite.com/2015/11/24/hello-world/"></div>
 
       <!-- 多说评论框 end -->
       <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
@@ -537,7 +698,7 @@ c = a + b <span class="comment">;</span>
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">二月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a><span class="archive-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -648,6 +809,10 @@ c = a + b <span class="comment">;</span>
       <ul>
         
           <li>
+            <a href="/2016/02/26/CSS知识点回顾/">CSS知识点回顾</a>
+          </li>
+        
+          <li>
             <a href="/2016/02/25/html学习总结/">html学习总结</a>
           </li>
         
@@ -661,10 +826,6 @@ c = a + b <span class="comment">;</span>
         
           <li>
             <a href="/2015/11/25/新的旅程/">新的旅程</a>
-          </li>
-        
-          <li>
-            <a href="/2015/11/24/hello-world/">Hello World</a>
           </li>
         
       </ul>
